@@ -27,9 +27,10 @@ bool ValidateInput (string input)
     bool IsNumber = int.TryParse(input, out int number);
     if (!IsNumber) 
     {
-       return false; 
+        Console.WriteLine("Пожалуйста, введите целое число.");
+        return false; 
     }
-    return true;
+    return екгу;
 }
 
 int[] AddArrayWithInput (int[] array, int summand)

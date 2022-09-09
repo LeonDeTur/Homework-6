@@ -5,28 +5,23 @@
 
 // 1, -7, 567, 89, 223-> 3
 
-// double[] WriteArray(double input)
-// {
-//     double[] array = new double[] {};
-    
-//     double num = 0;
-// }
 int input = 0;
-int[] tempArray = new int[0];
+int[] temporaryArray = new int[0];
+
 Console.WriteLine("Введите числа, каждое число через Enter. Когда закончите, введите любоё символ, не являющийся цифрой.");
-string? check = Console.ReadLine();
-while (ValidateInput(check) == true)
+string? checkOnNumber = Console.ReadLine();
+while (ValidateInput(checkOnNumber) == true)
 {
-    input = Convert.ToInt32(check);
-    tempArray = AddArray(tempArray, input);
-    PrintArray(tempArray);
-    check = Console.ReadLine();
+    input = Convert.ToInt32(checkOnNumber);
+    temporaryArray = AddArrayWithInput(temporaryArray, input);
+    PrintArray(temporaryArray);
+    checkOnNumber = Console.ReadLine();
 }
 
-int result = CountSum(tempArray);
+int result = CountSumAboveZero(temporaryArray);
 Console.WriteLine($"Введённые значения больше 0: {result}");
  
-
+// Методы
 bool ValidateInput (string input)
 {
     bool IsNumber = int.TryParse(input, out int number);
@@ -37,7 +32,7 @@ bool ValidateInput (string input)
     return true;
 }
 
-int[] AddArray (int[] array, int summand)
+int[] AddArrayWithInput (int[] array, int summand)
 {
     int[] SecondArray = new int[array.Length + 1];
     for (int i = 0; i < SecondArray.Length - 1; i++)
@@ -48,7 +43,7 @@ int[] AddArray (int[] array, int summand)
     return SecondArray;
 }
 
-int CountSum (int[] array)
+int CountSumAboveZero (int[] array)
 {
     int count = 0;
     for (int i = 0; i < array.Length; i++)
